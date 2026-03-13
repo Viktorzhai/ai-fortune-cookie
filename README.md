@@ -56,6 +56,13 @@ cd ai-fortune-cookie
 ./install.sh --host codex
 ```
 
+Direct install alternative:
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
+  ~/.codex/skills/ai-fortune-cookie
+```
+
 ### Claude Code
 
 ```bash
@@ -77,6 +84,13 @@ git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
 git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
 cd ai-fortune-cookie
 ./install.sh --host gemini
+```
+
+Direct install alternative:
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
+  ~/.gemini/skills/ai-fortune-cookie
 ```
 
 ### Cursor
@@ -166,5 +180,6 @@ The packaging choices in this repo follow the current host docs summarized in [d
 ```bash
 python3 scripts/context_snapshot.py --cwd .
 python3 /path/to/skill-creator/scripts/quick_validate.py .
+./scripts/verify_installs.sh
 ./install.sh --host all --project /tmp/fortune-cookie-cursor-test --force
 ```
