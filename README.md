@@ -1,52 +1,53 @@
 # AI Fortune Cookie
 
-A lightweight cross-agent skill that turns local repo signals into one short fortune while you wait on builds, tests, refactors, or agent runs.
+Fortune-cookie grammar, repo-aware nuance, and just enough theatrical nerve.
 
-GitHub repo names cannot contain spaces, so the clean public slug for this project should be `ai-fortune-cookie` even though the display name is "AI Fortune Cookie".
+AI Fortune Cookie is a cross-agent skill for `Codex`, `Claude Code`, `Gemini CLI`, and `Cursor`. It treats one-line encouragement like a constrained writing problem: preserve the elegant syntax of fortune-cookie wisdom, borrow only a hint of project context, and land the sentence with clean, memorable humor.
 
-Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
+In other words: it is a tiny compiler for morale.
 
-## What It Does
+## What Makes It Different
 
-- Reads lightweight local context only: current directory, Git branch/status, stack hints, optional shell history, and optional profile notes.
-- Generates exactly one sentence, designed to feel wise, bold, playful, and encouraging, with project context used only as a light hint.
-- Avoids external APIs and full-repo indexing.
+- **Fortune-cookie syntax matters.** The output is intentionally short, aphoristic, and shaped like actual fortune-cookie wisdom instead of generic motivational filler.
+- **Project context is seasoning, not soup.** Branch state, test noise, and repo mood can color the line, but the lesson still comes first.
+- **Humor with manners.** The tone aims for bold, playful, animated-sidekick energy without turning crude, mean, or sloppy.
+- **Local-first by design.** It relies on lightweight local context, not external APIs or heavy indexing.
+- **One concept, multiple hosts.** Codex, Claude Code, and Gemini CLI consume the same `SKILL.md` package; Cursor gets a project rule version.
+
+## Sample Fortunes
+
+> This branch may be wearing clown shoes, but patience can still teach it enough manners to enter the palace.
+
+> A noisy test suite is not your enemy; it is a dramatic little trumpet for the truth.
+
+> Refactors rarely arrive in a tuxedo, but good discipline can still teach them to bow.
+
+> Courage, dear builder: even tangled code can be persuaded to sit up straight.
+
+> When the work gets noisy, choose clarity first and let the panic trip over its own cape.
 
 ## Host Support
 
-The repo now supports four host families:
+- `Codex`: install as a skill in `~/.codex/skills/ai-fortune-cookie`
+- `Claude Code`: install as a skill in `~/.claude/skills/ai-fortune-cookie`
+- `Gemini CLI`: install as a skill in `~/.gemini/skills/ai-fortune-cookie`
+- `Cursor`: install as a project rule in `.cursor/rules/ai-fortune-cookie.mdc`
 
-- `Codex`: install as a skill via `~/.codex/skills/ai-fortune-cookie`
-- `Claude Code`: install as a skill via `~/.claude/skills/ai-fortune-cookie`
-- `Gemini CLI`: install as a skill via `~/.gemini/skills/ai-fortune-cookie`
-- `Cursor`: install as a project rule via `.cursor/rules/ai-fortune-cookie.mdc`
+Tested install flows:
 
-Codex, Claude Code, and Gemini CLI all consume the same `SKILL.md` package. Cursor uses a separate `.mdc` rule because its reusable instruction system is project rules rather than skills.
-
-## Repo Layout
-
-```text
-.
-├── SKILL.md
-├── agents/openai.yaml
-├── scripts/context_snapshot.py
-├── references/fortune-patterns.md
-├── targets/cursor/rules/ai-fortune-cookie.mdc
-├── docs/host-compatibility.md
-├── docs/fortune-cookie-skill-research.md
-├── install.sh
-├── LICENSE
-└── AGENTS.md
-```
+- Copy install
+- Symlink install
+- Direct in-place install for Codex, Claude Code, and Gemini CLI
+- `--host all`
 
 ## Install
 
-By default, `install.sh` copies files, which is safer across hosts. Use `--symlink` only if you want the installed skill to track live edits in this repo.
+By default, `install.sh` copies files, which is the safest cross-host mode. Use `--symlink` if you want the installed host path to track live edits in this repo.
 
-For `Codex`, `Claude Code`, and `Gemini CLI`, there are two valid install patterns:
+For `Codex`, `Claude Code`, and `Gemini CLI`, there are two valid patterns:
 
-- Clone anywhere, then run `./install.sh --host ...`
-- Clone directly into the host skill directory, which already counts as the install
+1. Clone anywhere, then run `./install.sh --host ...`
+2. Clone directly into the host skill directory, which already counts as the install
 
 ### Codex
 
@@ -56,7 +57,7 @@ cd ai-fortune-cookie
 ./install.sh --host codex
 ```
 
-Direct install alternative:
+Direct install:
 
 ```bash
 git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
@@ -71,7 +72,7 @@ cd ai-fortune-cookie
 ./install.sh --host claude
 ```
 
-Direct install alternative:
+Direct install:
 
 ```bash
 git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
@@ -86,7 +87,7 @@ cd ai-fortune-cookie
 ./install.sh --host gemini
 ```
 
-Direct install alternative:
+Direct install:
 
 ```bash
 git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
@@ -114,19 +115,19 @@ Useful flags:
 - `--force` replaces an existing install
 - `--symlink` links instead of copying
 - `--project` is required for Cursor installs
-- `CODEX_HOME`, `CLAUDE_HOME`, and `GEMINI_HOME` can override the default home directories
+- `CODEX_HOME`, `CLAUDE_HOME`, and `GEMINI_HOME` can override default home directories
 
 ## Updating
 
-There is no background auto-updater in this repo.
+There is no background auto-updater.
 
-How updates work depends on how the user installed it:
+How updates work:
 
-- If they cloned the repo directly into a skills directory, they can update with `git pull` inside that installed folder.
-- If they cloned the repo elsewhere and used the default copy install, they should run `git pull` in the repo and then rerun `./install.sh --host ... --force`.
-- If they installed with `--symlink`, they only need `git pull` in the source repo because the installed host path points back to the repo.
-- For Cursor copy installs, rerun `./install.sh --host cursor --project /path/to/project --force` after pulling changes.
-- If they run `install.sh` from a repo that is already cloned directly into the matching skill directory, the installer now detects that and safely does nothing.
+- If you cloned directly into a host skills directory, update with `git pull` in that installed folder.
+- If you used the default copy install, run `git pull` in your source repo and then rerun `./install.sh --host ... --force`.
+- If you used `--symlink`, `git pull` in the source repo is enough.
+- For Cursor copy installs, rerun `./install.sh --host cursor --project /path/to/project --force`.
+- If you run `install.sh` from a repo that is already cloned directly into the matching skill directory, the installer now safely detects that and does nothing.
 
 Examples:
 
@@ -136,7 +137,7 @@ cd ~/.claude/skills/ai-fortune-cookie && git pull
 cd ~/.gemini/skills/ai-fortune-cookie && git pull
 ```
 
-If the user installed from a separate repo clone:
+Copy-install refresh:
 
 ```bash
 cd ai-fortune-cookie
@@ -144,36 +145,39 @@ git pull
 ./install.sh --host all --project /path/to/project --force
 ```
 
-## Usage
+## How It Works
 
-Prompt examples:
+The skill gathers small, fast local signals:
 
-- `Use $ai-fortune-cookie to give me a fortune for this branch.`
-- `I am waiting on tests. Use $ai-fortune-cookie and keep it dry.`
-- `Use $ai-fortune-cookie for a short philosophical fortune about this refactor.`
+- Git root, branch, and changed files
+- Top-level stack hints from files like `package.json`, `pyproject.toml`, `Cargo.toml`, and `go.mod`
+- Optional recent shell history
+- Optional local profile hints
 
-Typical output:
+Then it applies a writing contract:
 
-> This branch may be wearing clown shoes, but patience can still teach it enough manners to enter the palace.
+- exactly one sentence
+- 12 to 30 words
+- project nuance as a hint, not the whole point
+- values and character-building first
+- humor that is bold, clean, and proper
 
-## Local Context Model
+## Repo Layout
 
-The helper script gathers small, fast signals:
-
-- Git root, branch, and changed files when the directory is a repository
-- Stack hints from files like `package.json`, `pyproject.toml`, `Cargo.toml`, and `go.mod`
-- Recent shell history from common local history files when available
-- Optional user-profile hints from `~/.codex/USER.md`, `~/.codex/CLAUDE.md`, or similar local files
-
-If a source is missing, the skill falls back cleanly instead of guessing.
-
-## Cursor Usage
-
-Cursor does not load `SKILL.md` skills directly. The included rule is installed into the target project's `.cursor/rules/` directory and becomes available to Cursor's agent as a reusable project rule. Ask for a fortune explicitly, or invoke the installed rule from the Cursor rules picker.
-
-## Compatibility Notes
-
-The packaging choices in this repo follow the current host docs summarized in [docs/host-compatibility.md](docs/host-compatibility.md).
+```text
+.
+├── SKILL.md
+├── agents/openai.yaml
+├── scripts/context_snapshot.py
+├── scripts/verify_installs.sh
+├── references/fortune-patterns.md
+├── targets/cursor/rules/ai-fortune-cookie.mdc
+├── docs/host-compatibility.md
+├── docs/fortune-cookie-skill-research.md
+├── install.sh
+├── LICENSE
+└── AGENTS.md
+```
 
 ## Development
 
@@ -183,3 +187,7 @@ python3 /path/to/skill-creator/scripts/quick_validate.py .
 ./scripts/verify_installs.sh
 ./install.sh --host all --project /tmp/fortune-cookie-cursor-test --force
 ```
+
+## Compatibility Notes
+
+Packaging decisions and host-specific constraints are summarized in [docs/host-compatibility.md](docs/host-compatibility.md).
