@@ -43,6 +43,11 @@ Codex, Claude Code, and Gemini CLI all consume the same `SKILL.md` package. Curs
 
 By default, `install.sh` copies files, which is safer across hosts. Use `--symlink` only if you want the installed skill to track live edits in this repo.
 
+For `Codex`, `Claude Code`, and `Gemini CLI`, there are two valid install patterns:
+
+- Clone anywhere, then run `./install.sh --host ...`
+- Clone directly into the host skill directory, which already counts as the install
+
 ### Codex
 
 ```bash
@@ -57,6 +62,13 @@ cd ai-fortune-cookie
 git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
 cd ai-fortune-cookie
 ./install.sh --host claude
+```
+
+Direct install alternative:
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
+  ~/.claude/skills/ai-fortune-cookie
 ```
 
 ### Gemini CLI
@@ -100,6 +112,7 @@ How updates work depends on how the user installed it:
 - If they cloned the repo elsewhere and used the default copy install, they should run `git pull` in the repo and then rerun `./install.sh --host ... --force`.
 - If they installed with `--symlink`, they only need `git pull` in the source repo because the installed host path points back to the repo.
 - For Cursor copy installs, rerun `./install.sh --host cursor --project /path/to/project --force` after pulling changes.
+- If they run `install.sh` from a repo that is already cloned directly into the matching skill directory, the installer now detects that and safely does nothing.
 
 Examples:
 

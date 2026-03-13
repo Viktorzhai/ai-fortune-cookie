@@ -58,6 +58,28 @@ done
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+canonical_path() {
+  local target="$1"
+  if [[ ! -e "${target}" && ! -L "${target}" ]]; then
+    return 1
+  fi
+  (
+    cd "${target}" >/dev/null 2>&1 && pwd -P
+  )
+}
+
+is_same_location() {
+  local left="$1"
+  local right="$2"
+  local left_real=""
+  local right_real=""
+
+  left_real="$(canonical_path "${left}" 2>/dev/null || true)"
+  right_real="$(canonical_path "${right}" 2>/dev/null || true)"
+
+  [[ -n "${left_real}" && -n "${right_real}" && "${left_real}" == "${right_real}" ]]
+}
+
 ensure_removed() {
   local target="$1"
 
@@ -90,6 +112,12 @@ install_skill_host() {
   local dest_dir="${dest_root}/${SKILL_NAME}"
 
   mkdir -p "${dest_root}"
+
+  if is_same_location "${REPO_DIR}" "${dest_dir}"; then
+    echo "${host_name} skill already installed in-place at ${dest_dir}"
+    return 0
+  fi
+
   ensure_removed "${dest_dir}"
 
   if [[ "${MODE}" == "symlink" ]]; then
