@@ -1,12 +1,12 @@
 ---
-description: Generate a single, context-aware fortune-cookie line when the user asks for a coding fortune, morale boost, witty one-liner, or short repo-specific quip during idle time.
+description: Generate a single fortune-cookie line when the user asks for a coding fortune, morale boost, wise proverb, or encouraging one-liner during idle time.
 globs: []
 alwaysApply: false
 ---
 
 # AI Fortune Cookie
 
-When the user asks for a coding fortune or short morale boost, generate one sentence that feels specific to the current work without sounding heavy or fabricated.
+When the user asks for a coding fortune or short morale boost, generate one sentence that uses the current work as a light hint while prioritizing wisdom, encouragement, values, and character-building.
 
 ## Workflow
 
@@ -14,18 +14,25 @@ When the user asks for a coding fortune or short morale boost, generate one sent
    - Inspect the current directory, repo name, branch, and `git status --short` if Git is available.
    - Note stack hints from top-level manifests such as `package.json`, `pyproject.toml`, `Cargo.toml`, and `go.mod`.
    - Use recent activity already visible in the chat, terminal output, or referenced files. Do not scan the full repository unless the user explicitly asks for deeper analysis.
+   - Treat context as background seasoning, not the main subject.
 
 2. Pick the angle from the strongest visible signal.
-   - Dirty working tree or refactors: patience, momentum, resilience.
-   - Tests, builds, or debugging loops: calm skepticism and steady progress.
-   - Infra, config, or schema work: foundations, caution, reliability.
-   - Docs, planning, or research work: clarity, synthesis, direction.
+   - Dirty working tree or refactors: patience, humility, perseverance.
+   - Tests, builds, or debugging loops: honesty, courage, steady attention.
+   - Infra, config, or schema work: responsibility, caution, reliability.
+   - Docs, planning, or research work: clarity, wisdom, discernment.
    - If the user asks for a style such as silly, dry, philosophical, ominous, or spicy, honor it lightly.
 
-3. Write the fortune.
-   - Use at most one concrete repo detail.
+3. Favor the deeper lesson over the specific detail.
+   - Default toward values, character-building, encouragement, mercy, grace, patience, courage, humility, discipline, and hope.
+   - Use project context as a hint or symbol, not the center of the sentence.
+   - If context is thin or noisy, produce a broader human lesson.
+
+4. Write the fortune.
+   - Use at most one light repo detail.
    - Keep the line readable in a terminal.
-   - Use metaphor only if it improves the sentence.
+   - Make it feel more like a proverb, blessing, or moral reminder than an engineering joke.
+   - Use metaphor only if it improves the lesson.
 
 ## Output Contract
 
@@ -33,3 +40,4 @@ When the user asks for a coding fortune or short morale boost, generate one sent
 - Keep it between 12 and 30 words.
 - No bullets, no markdown, no explanation.
 - Do not invent errors, deadlines, hobbies, or repository state.
+- Prefer warmth and encouragement over snark.

@@ -1,11 +1,11 @@
 ---
 name: ai-fortune-cookie
-description: Generate a single, context-aware fortune-cookie line for developers waiting on tests, builds, refactors, code reviews, or agent work. Use when the user wants a witty or motivating one-liner tied to the current repository, recent terminal activity, visible coding context, or a short morale boost during idle time.
+description: Generate a single fortune-cookie line for developers waiting on tests, builds, refactors, code reviews, or agent work. Use when the user wants a wise, encouraging, character-building one-liner that is gently informed by the current repository, recent terminal activity, or visible coding context without becoming overly specific.
 ---
 
 # AI Fortune Cookie
 
-Generate one short fortune that feels tailored to the current work without scanning the whole repository or inventing facts.
+Generate one short fortune that uses local context as a light hint, while prioritizing wisdom, encouragement, values, moral clarity, and character-building over repo specificity.
 
 ## Workflow
 
@@ -16,18 +16,26 @@ Generate one short fortune that feels tailored to the current work without scann
      ```
    - If the helper script is unavailable, fall back to visible context: `git status --short`, the current directory, top-level manifests, and any recent tool activity already present in the conversation.
    - Treat shell history and profile hints as optional. Never block on them.
+   - Treat all gathered context as background seasoning, not the headline of the fortune.
 
 2. Choose the angle from the strongest signal.
-   - Dirty working tree or refactors: patience, momentum, resilience.
-   - Tests, builds, or debugging loops: calm skepticism and steady progress.
-   - Infra, config, or schema work: foundations, reliability, caution.
-   - Docs, planning, or research work: clarity, synthesis, direction.
+   - Dirty working tree or refactors: patience, humility, perseverance.
+   - Tests, builds, or debugging loops: honesty, steadiness, courage.
+   - Infra, config, or schema work: responsibility, reliability, foresight.
+   - Docs, planning, or research work: clarity, wisdom, discernment.
    - If the user asks for a style such as silly, philosophical, dry, ominous, or spicy, honor it without changing the output contract.
 
-3. Write the fortune.
-   - Use at most one concrete repo detail such as a changed file, branch theme, stack hint, or recent command pattern.
+3. Favor the deeper lesson over the clever detail.
+   - Default toward values lessons, character-building lessons, encouraging energy, gentle moral insight, mercy, grace, patience, courage, discipline, humility, clarity, and hope.
+   - Let project context merely hint at the lesson. A branch, test loop, refactor, or schema can inspire the line, but should rarely be the center of attention.
+   - Prefer timeless truth over topical cleverness.
+   - If the context is noisy, thin, or overly technical, ignore most of it and produce a broader human lesson.
+
+4. Write the fortune.
+   - Use at most one light repo detail such as a branch theme, stack hint, or broad work mode. Avoid filenames unless they are unusually meaningful.
    - Keep the line readable in a terminal.
-   - Use metaphor only when it improves the sentence.
+   - Make the sentence feel like a proverb, blessing, moral reminder, or encouraging truth more than an engineering joke.
+   - Use metaphor only when it improves the lesson.
    - If profile hints are present, weave them in lightly and only when they obviously fit.
 
 ## Output Contract
@@ -37,12 +45,13 @@ Generate one short fortune that feels tailored to the current work without scann
 - No bullets, no markdown, no preamble, no explanation.
 - Do not quote long command output.
 - Do not invent errors, deadlines, hobbies, or repository state.
+- Prefer warmth, dignity, and encouragement over snark.
 
 ## Safety Rules
 
 - Prefer visible evidence over cleverness.
 - Avoid secrets, tokens, long paths, or private file contents.
-- If context is thin, produce a generic engineering fortune instead of a fabricated specific one.
+- If context is thin, produce a generic wisdom-forward fortune instead of a fabricated specific one.
 
 ## Reference
 

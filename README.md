@@ -9,7 +9,7 @@ Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
 ## What It Does
 
 - Reads lightweight local context only: current directory, Git branch/status, stack hints, optional shell history, and optional profile notes.
-- Generates exactly one sentence, designed to feel specific without sounding heavy.
+- Generates exactly one sentence, designed to feel wise, encouraging, and character-building, with project context used only as a light hint.
 - Avoids external APIs and full-repo indexing.
 
 ## Host Support
@@ -90,6 +90,33 @@ Useful flags:
 - `--project` is required for Cursor installs
 - `CODEX_HOME`, `CLAUDE_HOME`, and `GEMINI_HOME` can override the default home directories
 
+## Updating
+
+There is no background auto-updater in this repo.
+
+How updates work depends on how the user installed it:
+
+- If they cloned the repo directly into a skills directory, they can update with `git pull` inside that installed folder.
+- If they cloned the repo elsewhere and used the default copy install, they should run `git pull` in the repo and then rerun `./install.sh --host ... --force`.
+- If they installed with `--symlink`, they only need `git pull` in the source repo because the installed host path points back to the repo.
+- For Cursor copy installs, rerun `./install.sh --host cursor --project /path/to/project --force` after pulling changes.
+
+Examples:
+
+```bash
+cd ~/.codex/skills/ai-fortune-cookie && git pull
+cd ~/.claude/skills/ai-fortune-cookie && git pull
+cd ~/.gemini/skills/ai-fortune-cookie && git pull
+```
+
+If the user installed from a separate repo clone:
+
+```bash
+cd ai-fortune-cookie
+git pull
+./install.sh --host all --project /path/to/project --force
+```
+
 ## Usage
 
 Prompt examples:
@@ -100,7 +127,7 @@ Prompt examples:
 
 Typical output:
 
-> Your migration is teaching the schema patience; stable systems are usually assembled by people willing to rename one more column.
+> A hard branch can still teach a gentle lesson: patience is often how rough work becomes worthy work.
 
 ## Local Context Model
 
