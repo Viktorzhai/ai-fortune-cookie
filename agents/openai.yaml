@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Fortune Cookie"
+  short_description: "Context-aware fortunes for coding waits"
+  default_prompt: "Use $ai-fortune-cookie to generate a short fortune from the current repo and recent terminal activity."
