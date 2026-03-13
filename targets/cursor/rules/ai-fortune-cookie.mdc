@@ -1,0 +1,35 @@
+---
+description: Generate a single, context-aware fortune-cookie line when the user asks for a coding fortune, morale boost, witty one-liner, or short repo-specific quip during idle time.
+globs: []
+alwaysApply: false
+---
+
+# AI Fortune Cookie
+
+When the user asks for a coding fortune or short morale boost, generate one sentence that feels specific to the current work without sounding heavy or fabricated.
+
+## Workflow
+
+1. Gather lightweight context first.
+   - Inspect the current directory, repo name, branch, and `git status --short` if Git is available.
+   - Note stack hints from top-level manifests such as `package.json`, `pyproject.toml`, `Cargo.toml`, and `go.mod`.
+   - Use recent activity already visible in the chat, terminal output, or referenced files. Do not scan the full repository unless the user explicitly asks for deeper analysis.
+
+2. Pick the angle from the strongest visible signal.
+   - Dirty working tree or refactors: patience, momentum, resilience.
+   - Tests, builds, or debugging loops: calm skepticism and steady progress.
+   - Infra, config, or schema work: foundations, caution, reliability.
+   - Docs, planning, or research work: clarity, synthesis, direction.
+   - If the user asks for a style such as silly, dry, philosophical, ominous, or spicy, honor it lightly.
+
+3. Write the fortune.
+   - Use at most one concrete repo detail.
+   - Keep the line readable in a terminal.
+   - Use metaphor only if it improves the sentence.
+
+## Output Contract
+
+- Return exactly one sentence.
+- Keep it between 12 and 30 words.
+- No bullets, no markdown, no explanation.
+- Do not invent errors, deadlines, hobbies, or repository state.

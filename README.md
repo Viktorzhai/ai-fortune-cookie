@@ -1,6 +1,6 @@
 # AI Fortune Cookie
 
-A lightweight Codex skill that turns local repo signals into one short fortune while you wait on builds, tests, refactors, or agent runs.
+A lightweight cross-agent skill that turns local repo signals into one short fortune while you wait on builds, tests, refactors, or agent runs.
 
 GitHub repo names cannot contain spaces, so the clean public slug for this project should be `ai-fortune-cookie` even though the display name is "AI Fortune Cookie".
 
@@ -12,6 +12,17 @@ Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
 - Generates exactly one sentence, designed to feel specific without sounding heavy.
 - Avoids external APIs and full-repo indexing.
 
+## Host Support
+
+The repo now supports four host families:
+
+- `Codex`: install as a skill via `~/.codex/skills/ai-fortune-cookie`
+- `Claude Code`: install as a skill via `~/.claude/skills/ai-fortune-cookie`
+- `Gemini CLI`: install as a skill via `~/.gemini/skills/ai-fortune-cookie`
+- `Cursor`: install as a project rule via `.cursor/rules/ai-fortune-cookie.mdc`
+
+Codex, Claude Code, and Gemini CLI all consume the same `SKILL.md` package. Cursor uses a separate `.mdc` rule because its reusable instruction system is project rules rather than skills.
+
 ## Repo Layout
 
 ```text
@@ -20,6 +31,8 @@ Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
 ├── agents/openai.yaml
 ├── scripts/context_snapshot.py
 ├── references/fortune-patterns.md
+├── targets/cursor/rules/ai-fortune-cookie.mdc
+├── docs/host-compatibility.md
 ├── docs/fortune-cookie-skill-research.md
 ├── install.sh
 ├── LICENSE
@@ -28,22 +41,54 @@ Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
 
 ## Install
 
-### Option 1: Clone directly into your Codex skills directory
+By default, `install.sh` copies files, which is safer across hosts. Use `--symlink` only if you want the installed skill to track live edits in this repo.
 
-```bash
-git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
-  "${CODEX_HOME:-$HOME/.codex}/skills/ai-fortune-cookie"
-```
-
-### Option 2: Clone anywhere and install from the repo
+### Codex
 
 ```bash
 git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
 cd ai-fortune-cookie
-./install.sh
+./install.sh --host codex
 ```
 
-`./install.sh --copy` copies the runtime files instead of symlinking the repo. `./install.sh --force` replaces an existing install.
+### Claude Code
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
+cd ai-fortune-cookie
+./install.sh --host claude
+```
+
+### Gemini CLI
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
+cd ai-fortune-cookie
+./install.sh --host gemini
+```
+
+### Cursor
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
+cd ai-fortune-cookie
+./install.sh --host cursor --project /path/to/real/project
+```
+
+### Install Everywhere
+
+```bash
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
+cd ai-fortune-cookie
+./install.sh --host all --project /path/to/real/project
+```
+
+Useful flags:
+
+- `--force` replaces an existing install
+- `--symlink` links instead of copying
+- `--project` is required for Cursor installs
+- `CODEX_HOME`, `CLAUDE_HOME`, and `GEMINI_HOME` can override the default home directories
 
 ## Usage
 
@@ -68,9 +113,18 @@ The helper script gathers small, fast signals:
 
 If a source is missing, the skill falls back cleanly instead of guessing.
 
+## Cursor Usage
+
+Cursor does not load `SKILL.md` skills directly. The included rule is installed into the target project's `.cursor/rules/` directory and becomes available to Cursor's agent as a reusable project rule. Ask for a fortune explicitly, or invoke the installed rule from the Cursor rules picker.
+
+## Compatibility Notes
+
+The packaging choices in this repo follow the current host docs summarized in [docs/host-compatibility.md](docs/host-compatibility.md).
+
 ## Development
 
 ```bash
 python3 scripts/context_snapshot.py --cwd .
 python3 /path/to/skill-creator/scripts/quick_validate.py .
+./install.sh --host all --project /tmp/fortune-cookie-cursor-test --force
 ```
