@@ -4,6 +4,8 @@ A lightweight Codex skill that turns local repo signals into one short fortune w
 
 GitHub repo names cannot contain spaces, so the clean public slug for this project should be `ai-fortune-cookie` even though the display name is "AI Fortune Cookie".
 
+Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
+
 ## What It Does
 
 - Reads lightweight local context only: current directory, Git branch/status, stack hints, optional shell history, and optional profile notes.
@@ -29,14 +31,14 @@ GitHub repo names cannot contain spaces, so the clean public slug for this proje
 ### Option 1: Clone directly into your Codex skills directory
 
 ```bash
-git clone https://github.com/<your-user>/ai-fortune-cookie.git \
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git \
   "${CODEX_HOME:-$HOME/.codex}/skills/ai-fortune-cookie"
 ```
 
 ### Option 2: Clone anywhere and install from the repo
 
 ```bash
-git clone https://github.com/<your-user>/ai-fortune-cookie.git
+git clone https://github.com/Viktorzhai/ai-fortune-cookie.git
 cd ai-fortune-cookie
 ./install.sh
 ```
