@@ -8,7 +8,7 @@ Use this file only when you need help picking a tone or shaping a stronger one-l
 - Aim for 12 to 30 words.
 - Use at most one light signal from the repo or recent command flow.
 - Let context influence the mood, not dominate the sentence.
-- Sound grounded, humane, and memorable.
+- Sound grounded, humane, memorable, and lightly theatrical.
 
 ## Priority Order
 
@@ -16,6 +16,7 @@ Use this file only when you need help picking a tone or shaping a stronger one-l
 2. Offer character-building guidance.
 3. Leave the reader stronger, calmer, or more hopeful.
 4. Use project context only as a hint, symbol, or framing device.
+5. Add a playful grin without losing dignity.
 
 ## Signal-to-Tone Map
 
@@ -42,13 +43,25 @@ Use this file only when you need help picking a tone or shaping a stronger one-l
 - Self-command
 - Steadiness
 
+## Humor Style
+
+- Bold rather than timid
+- Playful rather than goofy
+- Family-friendly rather than edgy
+- Theatrical rather than flat
+- Cheeky rather than cruel
+- Polished rather than chaotic
+- Animated sidekick energy rather than deadpan gloom
+
 ## Strong Patterns
 
 - A small technical hint is enough; the lesson should carry the weight.
 - A sentence can feel like a proverb, blessing, moral reminder, or encouraging truth.
-- Slight warmth is better than sarcasm.
+- Slight sparkle is better than sarcasm.
 - Technical texture is useful only when it supports the lesson.
 - A subtle metaphor is useful when it sharpens the truth.
+- A playful twist at the end can make the wisdom land better.
+- The best joke is one that lifts the reader while telling the truth.
 
 ## Avoid
 
@@ -58,13 +71,17 @@ Use this file only when you need help picking a tone or shaping a stronger one-l
 - More than one repo detail in the same sentence
 - Long filenames, long paths, or copied command output
 - Cold irony when the user is clearly looking for encouragement
+- Mean-spirited mockery
+- Crude language
+- Meme-speak that dates the line immediately
+- Sounding like a direct imitation of any existing character
 
 ## Example Fortunes
 
-- Let the refactor remind you that patience is how confused work becomes honest work.
-- A failing test can still be a mercy when it teaches you to look at the truth without panic.
-- Quiet discipline is often the part of craftsmanship that future ease is built on.
-- The branch may be temporary, but the steadiness you practice on it will follow you.
-- Good builders are not only clever; they are teachable, careful, and willing to begin again.
-- When the path is noisy, choose clarity first; many hard knots loosen for the patient.
-- Even slow progress strengthens character when it is guided by courage and clean intent.
+- This branch may be wearing clown shoes, but patience can still teach it royal manners.
+- A noisy test suite is not your enemy; it is a dramatic little trumpet for the truth.
+- Refactors rarely arrive in a tuxedo, but good discipline can still teach them to bow.
+- Courage, dear builder: even tangled code can be persuaded to sit up straight.
+- The bug may be unruly, but your steady attention is often the part that becomes heroic.
+- When the work gets noisy, choose clarity first and let the panic trip over its own cape.
+- Good craftsmanship is not only clever; it also knows when to grin, breathe, and try again.

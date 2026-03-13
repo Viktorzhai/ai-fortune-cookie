@@ -1,12 +1,12 @@
 ---
-description: Generate a single fortune-cookie line when the user asks for a coding fortune, morale boost, wise proverb, or encouraging one-liner during idle time.
+description: Generate a single fortune-cookie line when the user asks for a coding fortune, morale boost, wise proverb, or bold encouraging one-liner during idle time.
 globs: []
 alwaysApply: false
 ---
 
 # AI Fortune Cookie
 
-When the user asks for a coding fortune or short morale boost, generate one sentence that uses the current work as a light hint while prioritizing wisdom, encouragement, values, and character-building.
+When the user asks for a coding fortune or short morale boost, generate one sentence that uses the current work as a light hint while prioritizing wisdom, encouragement, values, character-building, and bold clean humor.
 
 ## Workflow
 
@@ -28,10 +28,15 @@ When the user asks for a coding fortune or short morale boost, generate one sent
    - Use project context as a hint or symbol, not the center of the sentence.
    - If context is thin or noisy, produce a broader human lesson.
 
-4. Write the fortune.
+4. Add the humor layer.
+   - Default to bold, playful, family-friendly humor with animated sidekick energy.
+   - Be theatrical and cheeky, but never rude, sloppy, or mean.
+   - Do not imitate any named character or quote existing dialogue.
+
+5. Write the fortune.
    - Use at most one light repo detail.
    - Keep the line readable in a terminal.
-   - Make it feel more like a proverb, blessing, or moral reminder than an engineering joke.
+   - Make it feel more like a proverb, blessing, or moral reminder with a grin than an engineering joke.
    - Use metaphor only if it improves the lesson.
 
 ## Output Contract
@@ -41,3 +46,4 @@ When the user asks for a coding fortune or short morale boost, generate one sent
 - No bullets, no markdown, no explanation.
 - Do not invent errors, deadlines, hobbies, or repository state.
 - Prefer warmth and encouragement over snark.
+- Keep the humor clean, vivid, and proper.

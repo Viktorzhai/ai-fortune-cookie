@@ -9,7 +9,7 @@ Published repo: `https://github.com/Viktorzhai/ai-fortune-cookie`
 ## What It Does
 
 - Reads lightweight local context only: current directory, Git branch/status, stack hints, optional shell history, and optional profile notes.
-- Generates exactly one sentence, designed to feel wise, encouraging, and character-building, with project context used only as a light hint.
+- Generates exactly one sentence, designed to feel wise, bold, playful, and encouraging, with project context used only as a light hint.
 - Avoids external APIs and full-repo indexing.
 
 ## Host Support
@@ -127,7 +127,7 @@ Prompt examples:
 
 Typical output:
 
-> A hard branch can still teach a gentle lesson: patience is often how rough work becomes worthy work.
+> This branch may be wearing clown shoes, but patience can still teach it enough manners to enter the palace.
 
 ## Local Context Model
 
